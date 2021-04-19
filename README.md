@@ -1,3 +1,8 @@
+Volumes: 
+- /<path to your config>:/root 
+- /<path to your downloads>:/root/prefix32/drive_c/users/root/My Documents/My Kindle Content
+- /<path to your kindlekeys:/root/prefix32/drive_c/users/root/AppData/Local/Kindle
+
 ## wine-x11-novnc-docker
 
 Not a very good name, is it?
