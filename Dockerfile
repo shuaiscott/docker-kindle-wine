@@ -5,7 +5,10 @@ WORKDIR /root
 RUN mkdir -p /root/prefix32/drive_c/users/root/AppData/Local/Kindle/
 
 COPY 1.17.44183.exe /root
-COPY kindlekey.pyw /root
+COPY kindlekey.py /root
+COPY grabKindleKey.sh /root
+COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+ADD https://www.python.org/ftp/python/3.8.9/python-3.8.9.exe /root
 
 # X Server Framebuffer to run Wine in
 RUN \
@@ -14,9 +17,8 @@ apt-get install xvfb -y
 
 # Install Kindle
 RUN Xvfb :0 -screen 0 1024x768x16 & \
-exec wine 1.17.44183.exe "/S"
-
-#RUN wine /root/prefix32/drive_c/Python26/python.exe "/root/kindlekey.pyw"
+exec wine 1.17.44183.exe "/S" && \
+apt-get remove xvfb -y
 
 EXPOSE 8080
 
