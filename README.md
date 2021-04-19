@@ -1,9 +1,26 @@
 Volumes: 
-- `<path to your config>:/root`
+- `<path to your config>:/prefix32/drive_c/users/root/Local Settings/Application Data/Amazon/Kindle`
 - `<path to your downloads>:/root/prefix32/drive_c/users/root/My Documents/My Kindle Content`
+- `<path to your kindle keys>:/root/kindlekeys/`
 
-docker exec -it kindle-test sh grabKindleKey.sh
 
+```
+kindle-gui:
+    image: ghcr.io/shuaiscott/kindle-gui
+    container_name: kindle-gui
+    restart: always
+    ports:
+      - 8080:8080
+    volumes:
+      - "./kindle-gui/config:/root/prefix32/drive_c/users/root/Local Settings/Application Data/Amazon/Kindle"
+      - "./kindle-gui/keys:/root/kindlekeys/"
+      - "/data/downloads/books:/root/prefix32/drive_c/users/root/My Documents/My Kindle Content"
+```
+
+```
+docker-compose up -d
+docker exec -it kindle-gui sh grabKindleKey.sh
+```
 ## wine-x11-novnc-docker
 
 Not a very good name, is it?

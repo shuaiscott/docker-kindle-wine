@@ -2,7 +2,10 @@ FROM solarkennedy/wine-x11-novnc-docker:latest
 
 WORKDIR /root
 
-RUN mkdir -p /root/prefix32/drive_c/users/root/AppData/Local/Kindle/
+# Add "updates" file to prevent app from auto-updating
+RUN \
+mkdir -p /prefix32/drive_c/users/root/Local Settings/Application Data/Amazon/Kindle/ &&\
+touch /prefix32/drive_c/users/root/Local Settings/Application Data/Amazon/Kindle/updates
 
 COPY 1.17.44183.exe /root
 COPY kindlekey.py /root
