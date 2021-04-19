@@ -24,6 +24,9 @@ WORKDIR /root/
 RUN wget -O - https://github.com/novnc/noVNC/archive/v1.1.0.tar.gz | tar -xzv -C /root/ && mv /root/noVNC-1.1.0 /root/novnc && ln -s /root/novnc/vnc_lite.html /root/novnc/index.html && \
     wget -O - https://github.com/novnc/websockify/archive/v0.9.0.tar.gz | tar -xzv -C /root/ && mv /root/websockify-0.9.0 /root/novnc/utils/websockify
 
+RUN wget "https://web.archive.org/web/20170111102550if_/https://s3.amazonaws.com/kindleforpc/44183/KindleForPC-installer-1.17.44183.exe"
+
+
 EXPOSE 8080
 
 CMD ["/usr/bin/supervisord"]
