@@ -15,7 +15,7 @@ jobs:
       
       - name: Install X11 dependencies
         run: |
-          apt-get install xorg openbox
+          sudo apt-get install xorg openbox
 
       - name: 'Build:dockerimage'
         uses: docker/build-push-action@v2
